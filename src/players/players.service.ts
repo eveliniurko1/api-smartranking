@@ -13,6 +13,12 @@ export class PlayersService {
         this.createPlayer(playerDto)
     }
 
+    async deletePLayer(email): Promise<void> {
+        const playerIndex = this.players.findIndex(p => p.email === email)
+        console.log("index", playerIndex)
+        if (playerIndex > -1) this.players.splice(playerIndex, 1)
+    }
+
     private createPlayer(playerDto: CreatePlayerDto): void {
         const { name, email, phoneNumber } = playerDto
 
